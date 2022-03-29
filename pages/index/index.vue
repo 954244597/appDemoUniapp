@@ -4,7 +4,7 @@
 			style="height:100rpx;" />
 		<swiper disable-programmatic-animation :current="activity" @change="swipterOnchange"
 			:style="'height:'+listHeight+'px;'">
-			<swiper-item v-for="(item,index) in topBar">
+			<swiper-item v-for="(item,index) in topBar" :key="index">
 				<scroll-view scroll-y="true" :style="'height:'+listHeight+'px;'" @scrolltolower="loadmor">
 					<divider></divider>
 					<block v-for="(item,index) in list" :key="index">
@@ -36,23 +36,7 @@
 				listHeight: 100,
 				scorlInfo: '',
 				activity: 0,
-				topBar: [{
-					name: '娱乐'
-				}, {
-					name: '但是'
-				}, {
-					name: '成都'
-				}, {
-					name: '我的'
-				}, {
-					name: '从现在'
-				}, {
-					name: '方法'
-				}, {
-					name: '22'
-				}, {
-					name: '包v'
-				}],
+				topBar: [],
 				list: [{
 						username: "陈伟铭测试",
 						userpic: '/static/default.jpg',
@@ -130,14 +114,15 @@
 			})
 		},
 		mounted() {
-			// uni.request({
-			//     url: 'https://www.fastmock.site/mock/b219b67e2b2ff234d48d81361e5c17f7/_api/image/photo', //仅为示例，并非真实接口地址。
-			//     success: (res) => {
-			//         console.log(res.data.data);
-			// 		this.list = res.data.data.list
-			//         // this.text = 'request success';
-			//     }
-			// });
+			uni.request({
+				url: 'http://124.221.224.195/index/getClass', //仅为示例，并非真实接口地址。
+				success: (res) => {
+					console.log(res.data.data.list);
+					this.topBar = res.data.data.list
+					// this.list = res.data.data.list
+					// this.text = 'request success';
+				}
+			});
 		},
 		methods: {
 			loadmor() {
@@ -199,5 +184,9 @@
 </script>
 
 <style>
-
+	scroll-view ::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+		background-color: transparent;
+	}
 </style>
