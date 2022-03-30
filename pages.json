@@ -13,7 +13,7 @@
 						},
 						"buttons": [{
 							"colorPressed": "#FD597C",
-							"color":"#333333",
+							"color": "#333333",
 							"fontSrc": "/static/iconfont.ttf",
 							"text": "\ue668"
 						}]
@@ -46,6 +46,37 @@
 
 		}
 
+		, {
+			"path": "pages/search/search",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"searchInput": {
+							"placeholder": "请输入想搜索的内容",
+							"backgroundColor": "#f5f4f2",
+							"borderRadius": "8upx"
+							// "disabled": "true"
+						},
+						"buttons": [{
+							"colorPressed": "#FD597C",
+							"color": "#333333",
+							// "fontSrc": "/static/iconfont.ttf",
+							"fontSize": 14,
+							"text": "搜索"
+						}]
+					}
+				}
+			}
+
+		}, {
+			"path": "pages/add-input/add-input",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+
+		}
 	],
 	"tabBar": {
 		"color": "#7A7E83",

@@ -105,12 +105,23 @@
 
 		// },
 		onReady() {
+			console.log(1)
 			uni.getSystemInfo({
 				success: (res) => {
 					this.listHeight = res.windowHeight - uni.upx2px(100)
 					console.log(res.windowHeight)
 					console.log(this.listHeight)
 				}
+			})
+		},
+		onNavigationBarSearchInputClicked() {
+			uni.navigateTo({
+				url: '../search/search'
+			})
+		},
+		onNavigationBarButtonTap() {
+			uni.navigateTo({
+				url: '../add-input/add-input'
 			})
 		},
 		mounted() {
@@ -126,10 +137,16 @@
 		},
 		methods: {
 			loadmor() {
+				console.log(111)
+				if (this.loadMore === "加载中~~~~") {
+					return
+				}
+				this.loadMore = "加载中~~~~"
+
 				setTimeout(() => {
-					this.loadMore == "加载更多~~~~"
+					this.loadMore = "下拉加载更多"
 					this.list = [...this.list, ...this.list]
-					console.log('加载更多~~~~')
+					console.log('222')
 				}, 2000)
 			},
 			swipterOnchange(current, source) {
