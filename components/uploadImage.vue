@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<page-head :title="title"></page-head>
 		<view class="uni-common-mt">
 			<form>
 				<view class="uni-list list-pd">
@@ -13,8 +12,14 @@
 							<view class="uni-uploader-body">
 								<view class="uni-uploader__files">
 									<block v-for="(image,index) in imageList" :key="index">
-										<view class="uni-uploader__file">
-											<image class="uni-uploader__img" :src="image" :data-src="image" @tap="previewImage"></image>
+										<view class="uni-uploader__file" style="position: relative;">
+											<image class="uni-uploader__img" :src="image" :data-src="image"
+												@tap="previewImage"></image>
+											<view class=" p-1 rounded"
+												style="position: absolute; top: 0; right: 0; background-color: rgba(0,0,0,0.5);"
+												@click.stop="deleteImage(index)">
+												<text class="iconfont  icon-shanchu text-white"></text>
+											</view>
 										</view>
 									</block>
 									<view class="uni-uploader__input-box">
@@ -30,7 +35,7 @@
 	</view>
 </template>
 <script>
-	import permision from "@/common/permission.js"
+	import permision from "../common/permission.js"
 	var sourceType = [
 		['camera'],
 		['album'],
@@ -42,10 +47,16 @@
 		['compressed', 'original']
 	]
 	export default {
+		props: {
+			imageLists: {
+				default:[],
+				type:Array
+			}
+		},
 		data() {
 			return {
 				title: 'choose/previewImage',
-				imageList: [],
+				imageList: this.imageLists,
 				sourceTypeIndex: 2,
 				sourceType: ['拍照', '相册', '拍照或相册'],
 				sizeTypeIndex: 2,
@@ -54,6 +65,7 @@
 				count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 			}
 		},
+		// computed:
 		onUnload() {
 			this.imageList = [],
 				this.sourceTypeIndex = 2,
@@ -62,7 +74,16 @@
 				this.sizeType = ['压缩', '原图', '压缩或原图'],
 				this.countIndex = 8;
 		},
+		onBackPress() {
+
+		},
 		methods: {
+			deleteImage: function(index) {
+				this.imageList = this.imageList.filter((item, i) => {
+					return index !== i
+				})
+				this.$emit('choosePic', this.imageList)
+			},
 			sourceTypeChange: function(e) {
 				this.sourceTypeIndex = parseInt(e.detail.value)
 			},
@@ -93,19 +114,21 @@
 				uni.chooseImage({
 					sourceType: sourceType[this.sourceTypeIndex],
 					sizeType: sizeType[this.sizeTypeIndex],
-					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
+					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList
+						.length : this.count[this.countIndex],
 					success: (res) => {
 						this.imageList = this.imageList.concat(res.tempFilePaths);
+						this.$emit('choosePic', this.imageList)
 					},
 					fail: (err) => {
-						console.log("err: ",err);
+						console.log("err: ", err);
 						// #ifdef APP-PLUS
 						if (err['code'] && err.code !== 0 && this.sourceTypeIndex === 2) {
 							this.checkPermission(err.code);
 						}
 						// #endif
 						// #ifdef MP
-						if(err.errMsg.indexOf('cancel') !== '-1'){
+						if (err.errMsg.indexOf('cancel') !== '-1') {
 							return;
 						}
 						uni.getSetting({
@@ -119,7 +142,8 @@
 										authStatus = res.authSetting['scope.album'];
 										break;
 									case 2:
-										authStatus = res.authSetting['scope.album'] && res.authSetting['scope.camera'];
+										authStatus = res.authSetting['scope.album'] && res
+											.authSetting['scope.camera'];
 										break;
 									default:
 										break;
