@@ -14,7 +14,7 @@
 									<block v-for="(image,index) in imageList" :key="index">
 										<view class="uni-uploader__file" style="position: relative;">
 											<image class="uni-uploader__img" :src="image" :data-src="image"
-												@tap="previewImage"></image>
+												@tap="previewImage" mode="aspectFill"></image>
 											<view class=" p-1 rounded"
 												style="position: absolute; top: 0; right: 0; background-color: rgba(0,0,0,0.5);"
 												@click.stop="deleteImage(index)">
@@ -49,14 +49,14 @@
 	export default {
 		props: {
 			imageLists: {
-				default:[],
-				type:Array
+				default: [],
+				type: Array
 			}
 		},
 		data() {
 			return {
 				title: 'choose/previewImage',
-				imageList: this.imageLists,
+				imageList: [],
 				sourceTypeIndex: 2,
 				sourceType: ['拍照', '相册', '拍照或相册'],
 				sizeTypeIndex: 2,
@@ -65,8 +65,14 @@
 				count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 			}
 		},
-		// computed:
+
+		mounted() {
+			this.imageList = this.imageLists
+			console.log(this.imageLists)
+		},
+		
 		onUnload() {
+			console.log(1111);
 			this.imageList = [],
 				this.sourceTypeIndex = 2,
 				this.sourceType = ['拍照', '相册', '拍照或相册'],

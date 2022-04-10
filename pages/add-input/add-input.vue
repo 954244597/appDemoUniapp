@@ -5,14 +5,15 @@
 				所有人可见<text class="iconfont icon-shezhi"></text>
 			</view>
 		</uni-nav-bar>
-		<textarea v-model="content" class="uni-textarea px-2"></textarea>
+		<textarea v-model="content" class="px-2"></textarea>
 
-		<uploadImage :imageLists="imageLists" @choosePic="savePics"></uploadImage>
+		<uploadImage ref="uploadImage" :imageLists="imageLists" @choosePic="savePics"></uploadImage>
 
 		<view class="flex align-center bg-white fixed-bottom" style="height: 85rpx;">
 			<view class="iconfont icon-caidan button_flex animated " hover-class="jello"></view>
 			<view class="iconfont icon-huati  button_flex animated" hover-class="jello"></view>
-			<view class="iconfont icon-tupian  button_flex animated" hover-class="jello"> </view>
+			<view class="iconfont icon-tupian  button_flex animated" hover-class="jello"
+				@click="choosImage('uploadImage')"> </view>
 
 			<view class="text-white mr-2 rounded bg-main ml-auto flex justify-center align-center"
 				style="width: 140rpx; height: 60rpx;">发送</view>
@@ -41,28 +42,38 @@
 				key: 'uniinput',
 				success: (res) => {
 					const {
-						content,
-						imageLists
+						content = "",
+							imageLists = []
 					} = JSON.parse(res.data)
 					this.content = content
 					this.imageLists = imageLists
-					console.log(content, imageLists)
 				}
 			})
 		},
 		methods: {
+			choosImage(type) {
+				switch (type) {
+					case 'uploadImage':
+						this.$refs.uploadImage.chooseImage()
+						break;
+					default:
+						break;
+				}
+			},
 			savePics(item) {
 				this.imageLists = item
-				console.log("=>>>>>>>>")
-
 			},
-			localSave() {
-				uni.setStorage({
-					key: 'uniinput',
-					data: JSON.stringify({
+			localSave(type) {
+				let data = JSON.stringify({})
+				if (type) {
+					data = JSON.stringify({
 						content: this.content,
 						imageLists: this.imageLists
 					})
+				}
+				uni.setStorage({
+					key: 'uniinput',
+					data: data
 				})
 			},
 			back() {
@@ -74,20 +85,21 @@
 						confirmText: '保存',
 						success: res => {
 							if (res.confirm) {
-								this.localSave()
+								this.localSave(true)
+							} else {
+								this.localSave(false)
 							}
 							uni.navigateBack({
 								delta: 1
 							})
 						},
 					})
+				}else{
+					uni.navigateBack({
+						delta: 1
+					})
 				}
-
-
 			}
-			// submit(){
-			// 	console.log(this.content,"submit")
-			// }
 		}
 	}
 </script>
