@@ -75,7 +75,16 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/topicMore/topicMore",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "更多话题",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"tabBar": {
 		"color": "#7A7E83",
 		"selectedColor": "#42b938",

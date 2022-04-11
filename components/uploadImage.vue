@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="uni-common-mt">
+		<view class="uni-common-mt" v-if="imageList.length>0">
 			<form>
 				<view class="uni-list list-pd">
 					<view class="uni-list-cell cell-pd">
@@ -70,7 +70,7 @@
 			this.imageList = this.imageLists
 			console.log(this.imageLists)
 		},
-		
+
 		onUnload() {
 			console.log(1111);
 			this.imageList = [],
