@@ -26,20 +26,37 @@
 		, {
 			"path": "pages/msg/msg",
 			"style": {
-				
+				"navigationBarTitleText": "更多话题",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"float":"left",
+							"colorPressed": "#FD597C",
+							"color": "#333333",
+							"fontSrc": "/static/iconfont.ttf",
+							"text": "\ue611"
+						}, {
+							"float":"right",
+							"colorPressed": "#FD597C",
+							"color": "#333333",
+							"fontSrc": "/static/iconfont.ttf",
+							"text": "\ue649"
+						}]
+					}
+				}
 			}
 
 		}, {
 			"path": "pages/news/news",
 			"style": {
-				"app-plus":{
-					"titleNView":false
-				} 
+				"app-plus": {
+					"titleNView": false
+				}
 			}
 		}, {
 			"path": "pages/my/my",
 			"style": {
-				
+
 			}
 
 		}
@@ -74,17 +91,28 @@
 				}
 			}
 
+		}, {
+			"path": "pages/topicMore/topicMore",
+			"style": {
+				"navigationBarTitleText": "更多话题",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/topicDetial/topicDetial",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent",
+						"buttons": [{
+							"type": "menu"
+						}]
+					}
+				}
+			}
+
 		}
-	    ,{
-            "path" : "pages/topicMore/topicMore",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "更多话题",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"tabBar": {
 		"color": "#7A7E83",
 		"selectedColor": "#42b938",

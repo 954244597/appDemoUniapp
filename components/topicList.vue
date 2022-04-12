@@ -1,7 +1,7 @@
 <template>
 
 	<view>
-		<view class=" flex p-2" v-for="(item,index) in topicList">
+		<view class=" flex p-2" v-for="(item,index) in topicList" @click="toDetail(item)">
 			<image :src="item.cover" class="rounded mr-2" style="width: 150rpx; height: 150rpx; ">
 			</image>
 			<view class="flex flex-column flex-1 justify-between">
@@ -32,6 +32,14 @@
 		},
 		mounted() {
 			this.topicLists = this.topicList
+		},
+		methods: {
+			toDetail(item) {
+				console.log(item)
+				uni.navigateTo({
+					url: "../../pages/topicDetial/topicDetial?detialSource=" + JSON.stringify(item)
+				})
+			}
 		}
 	}
 </script>
