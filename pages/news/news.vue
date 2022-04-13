@@ -26,7 +26,7 @@
 			<swiper-item>
 				<scroll-view scroll-y="true" :style="'height:'+listHeight+'px;'" @scrolltolower="loadmor">
 					<hotList :hotList="hotList"></hotList>
-					<view class="p-2">
+					<view class="p-2" @click="search">
 						<view class="flex align-center justify-center bg-light rounded py-2 text-secondary">
 							<text class="iconfont icon-sousuo mr-2"></text>搜索话题
 						</view>
@@ -179,6 +179,11 @@
 			})
 		},
 		methods: {
+			search() {
+				uni.navigateTo({
+					url: '../search/search?type=topic'
+				})
+			},
 			loadmor() {
 				if (this.loadMore === "加载中~~~~") {
 					return

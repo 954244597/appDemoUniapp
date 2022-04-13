@@ -27,8 +27,23 @@
 			return {
 				searchText: '',
 				searchHistoryList: ["cs1", "2", "3", "4", "5", "6", "7", "8", ],
-				searlist: []
+				searlist: [],
+				type: ""
 			}
+		},
+		onLoad(e) {
+			this.type = e.type;
+			// console.log(this)
+			// #ifdef APP-PLUS  
+			console.log(12323)
+			// let currentWebView = this.$mp.page.$getAppWebview();
+			// let tn = currentWebView.getStyle().titleNView;
+			// tn.searchInput.placeholder = '搜索' + 11111
+			// currentWebView.setStyle({
+			// 	titleNView: tn
+			// })
+			// const currentWebview = this.$scope.$getAppWebview();
+			// console.log(currentWebview)
 		},
 		methods: {
 			search() {
@@ -64,7 +79,7 @@
 			}
 		},
 		onReady() {
-			console.log(2)
+
 		}
 	}
 </script>

@@ -26,17 +26,18 @@
 		, {
 			"path": "pages/msg/msg",
 			"style": {
+				"enablePullDownRefresh": true,
 				"navigationBarTitleText": "更多话题",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{
-							"float":"left",
+							"float": "left",
 							"colorPressed": "#FD597C",
 							"color": "#333333",
 							"fontSrc": "/static/iconfont.ttf",
 							"text": "\ue611"
 						}, {
-							"float":"right",
+							"float": "right",
 							"colorPressed": "#FD597C",
 							"color": "#333333",
 							"fontSrc": "/static/iconfont.ttf",
@@ -107,6 +108,49 @@
 						"buttons": [{
 							"type": "menu"
 						}]
+					}
+				}
+			}
+
+		}, {
+			"path": "pages/userlist/userlist",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "更多话题",
+				"app-plus": {
+					"animationType": "slide-in-left",
+					"titleNView": {
+						"searchInput": {
+							"placeholder": "搜索用户",
+							"backgroundColor": "#f5f4f2",
+							"borderRadius": "8upx",
+							"disabled": "true"
+						},
+						"buttons": [{
+							"colorPressed": "#FD597C",
+							"color": "#333333",
+							"fontSize": "15rpx",
+							"text": "取消"
+						}]
+					}
+				}
+			}
+
+		}, {
+			"path": "pages/userchart/userchart",
+			"style": {
+				"app-plus": {
+					"bounce":"none",
+					"titleNView": {
+						"buttons": [{
+								"float": "right",
+								"colorPressed": "#FD597C",
+								"color": "#333333",
+								"fontSrc": "/static/iconfont.ttf",
+								"text": "\ue628",
+								"fontSize":"16"
+							}
+						]
 					}
 				}
 			}

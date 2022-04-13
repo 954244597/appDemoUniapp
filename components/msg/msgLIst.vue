@@ -1,7 +1,7 @@
 <template>
 
 	<view>
-		<view class="flex p-2">
+		<view class="flex p-2" @click="click">
 			<image style="width: 80rpx;height: 80rpx;" class="rounded-circle mr-2" src="/static/demo/topicpic/11.jpeg">
 			</image>
 			<view class="flex flex-column flex-1">
@@ -37,12 +37,16 @@
 				listItem: {}
 			}
 		},
+		methods:{
+			click(){
+				uni.navigateTo({
+					url: '../../pages/userchart/userchart',
+				});
+			}
+		},
 		mounted() {
 			this.listItem = this.item
 		},
-		methods: {
-
-		}
 	}
 </script>
 
