@@ -232,7 +232,7 @@
 .font-sm { font-size: 25rpx;}
 .font { font-size: 30rpx!important;}
 .font-md { font-size: 35rpx!important;}
-.font-lg { font-size: 40rpx;}
+.font-lg { font-size: 40rpx!important;}
 .h1{font-size:80rpx; line-height:1.8;}
 .h2{font-size:60rpx; line-height:1.8;}
 .h3{font-size:45rpx; line-height:1.8;}
@@ -401,7 +401,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1030;
+  z-index: 996;
 }
 .top-0 { top: 0; }
 .left-0 { left: 0; }

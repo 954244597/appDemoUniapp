@@ -57,7 +57,18 @@
 		}, {
 			"path": "pages/my/my",
 			"style": {
-
+				"navigationBarTitleText": "个人中心",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"float": "right",
+							"colorPressed": "#FD597C",
+							"color": "#333333",
+							"type": "menu"
+							// "fontSize": "16"
+						}]
+					}
+				}
 			}
 
 		}
@@ -140,23 +151,61 @@
 			"path": "pages/userchart/userchart",
 			"style": {
 				"app-plus": {
-					"bounce":"none",
+					"bounce": "none",
 					"titleNView": {
 						"buttons": [{
-								"float": "right",
-								"colorPressed": "#FD597C",
-								"color": "#333333",
-								"fontSrc": "/static/iconfont.ttf",
-								"text": "\ue628",
-								"fontSize":"16"
-							}
-						]
+							"float": "right",
+							"colorPressed": "#FD597C",
+							"color": "#333333",
+							"fontSrc": "/static/iconfont.ttf",
+							"text": "\ue628",
+							"fontSize": "16"
+						}]
+					}
+				}
+			}
+
+		}, {
+			"path": "pages/detial/detial",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"type": "menu",
+							"float": "right"
+						}]
 					}
 				}
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/useSet/useSet",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "设置",
+                "enablePullDownRefresh": false,
+				"app-plus":{
+					"titleNView":{
+						"buttons": [{
+							"type": "menu",
+							"float": "right"
+						}]
+					}
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/userPassWord/userPassWord",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"tabBar": {
 		"color": "#7A7E83",
 		"selectedColor": "#42b938",

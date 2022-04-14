@@ -2,7 +2,8 @@
 	<view style="padding: 20rpx;">
 		<view style="display: flex;align-items: center;justify-content: space-between;">
 			<view style="display: flex; align-items: center;">
-				<image :src="item.userpic" style="width: 65rpx; margin-right: 20rpx; height: 65rpx; border-radius: 100%;" lazy-load=""
+				<image :src="item.userpic"
+					style="width: 65rpx; margin-right: 20rpx; height: 65rpx; border-radius: 100%;" lazy-load=""
 					@click="openSpacel">
 				</image>
 				<view>
@@ -16,9 +17,11 @@
 				{{item.ifFollow ? '取消关注':'关注'}}
 			</view>
 		</view>
-		<view style="font-size: 30rpx; margin: 10rpx 0;" @click="openDetial">{{item.title}}</view>
-		<image v-if="item.titlepoc" :src="item.titlepoc" style="height: 350rpx; width: 100%;" mode="widthFix"
-			@click="openDetial"></image>
+		<view style="font-size: 30rpx; margin: 10rpx 0;" @click="openDetial(item)">{{item.title}}</view>
+		<slot>
+			<image v-if="item.titlepoc" :src="item.titlepoc" style="height: 350rpx; width: 100%;" mode="widthFix"
+				@click="openDetial(item)"></image>
+		</slot>
 		<view style="display: flex; justify-content: center; padding-top:20rpx ;">
 			<view style="flex:1;display: flex;justify-content:center" class="animated faster " hover-class="jello"
 				@click="doSopport('support')" :class="item.support.type=== 'support' ? 'text-main' :''">
@@ -31,12 +34,12 @@
 				<text>{{item.support.un_support_count}}</text>
 			</view>
 			<view style="flex:1;display: flex;justify-content: center; " class="animated faster" hover-class="jello"
-				@click="openDetial()">
+				@click="doCommon()">
 				<text class="iconfont icon-pinglun2" style="margin-right: 20rpx;"></text>
 				<text>{{item.comment_count}}</text>
 			</view>
 			<view style="flex:1;display: flex;justify-content: center; " class="animated faster" hover-class="jello"
-				@click="openDetial()">
+				@click="doShare()">
 				<text class="iconfont icon-zhuanfa1" style="margin-right: 20rpx;"></text>
 				<text>{{item.share_count}}</text>
 			</view>
@@ -48,7 +51,11 @@
 	export default {
 		props: {
 			item: Object,
-			index: Number
+			index: Number,
+			isdetial: {
+				default: false,
+				type: Boolean
+			}
 		},
 		methods: {
 			openSpacel() {
@@ -58,11 +65,39 @@
 				console.log('关注')
 				this.$emit('follow', this.index)
 			},
-			openDetial() {
+			openDetial(item) {
+				if (this.isdetial) {
+					return
+				}
+				uni.navigateTo({
+					url: "../../pages/detial/detial?detial=" + JSON.stringify(item)
+				})
 				console.log('打开详情页')
 			},
+			doCommon() {
+				if (!this.isdetial) {
+					uni.navigateTo({
+						url: "../../pages/detial/detial?detial=" + JSON.stringify(this.item)
+					})
+				} else {
+					this.$emit('doCommon')
+				}
+
+
+			},
+			doShare() {
+				if (!this.isdetial) {
+					uni.navigateTo({
+						url: "../../pages/detial/detial?detial=" + JSON.stringify(this.item)
+					})
+				} else {
+					this.$emit('doShare')
+				}
+
+
+			},
 			doSopport(type) {
-				this.$emit('doSopport',type ,this.index)
+				this.$emit('doSopport', type, this.index)
 				console.log('点赞')
 			}
 		}

@@ -35,7 +35,6 @@
 			this.type = e.type;
 			// console.log(this)
 			// #ifdef APP-PLUS  
-			console.log(12323)
 			// let currentWebView = this.$mp.page.$getAppWebview();
 			// let tn = currentWebView.getStyle().titleNView;
 			// tn.searchInput.placeholder = '搜索' + 11111
