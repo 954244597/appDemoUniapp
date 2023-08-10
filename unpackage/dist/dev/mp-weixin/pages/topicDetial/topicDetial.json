@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "topic-info": "/components/topicDetial/topicInfo",
+    "common-list": "/components/common-list"
+  }
+}

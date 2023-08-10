@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "uni-nav-bar": "/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar",
+    "common-list": "/components/common-list",
+    "hot-list": "/components/hotlist",
+    "topic-list": "/components/topicList"
+  }
+}

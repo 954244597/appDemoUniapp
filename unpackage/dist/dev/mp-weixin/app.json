@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/msg/msg",
+    "pages/news/news",
+    "pages/my/my",
+    "pages/search/search",
+    "pages/add-input/add-input",
+    "pages/topicMore/topicMore",
+    "pages/topicDetial/topicDetial",
+    "pages/userlist/userlist",
+    "pages/userchart/userchart",
+    "pages/detial/detial",
+    "pages/useSet/useSet",
+    "pages/userPassWord/userPassWord",
+    "pages/userinfo/userinfo"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "社区",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#42b938",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/homeed.png",
+        "text": "社区"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "iconPath": "static/tabbar/news.png",
+        "selectedIconPath": "static/tabbar/newsed.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "iconPath": "static/tabbar/news.png",
+        "selectedIconPath": "static/tabbar/newsed.png",
+        "text": "新闻"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/tabbar/paper.png",
+        "selectedIconPath": "static/tabbar/papered.png",
+        "text": "个人主页"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "测试包"
+    }
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "divider": "/components/divider"
+  }
+}

@@ -1,0 +1,5 @@
+
+ .uni-list-item__container {
+	align-items: center;
+}
+

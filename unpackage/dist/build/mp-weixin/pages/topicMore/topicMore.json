@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "更多话题",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tab-bar": "/components/tabBar",
+    "topic-list": "/components/topicList"
+  }
+}

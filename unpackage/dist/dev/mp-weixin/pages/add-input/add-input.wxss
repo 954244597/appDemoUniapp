@@ -1,0 +1,9 @@
+
+.button_flex {
+	width: 86rpx;
+	height: 86rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+

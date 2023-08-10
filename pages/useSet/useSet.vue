@@ -6,7 +6,7 @@
 					<view class="iconfont icon-jinru"></view>
 				</template>
 			</uni-list-item>
-			<uni-list-item clickable title="资料编辑">
+			<uni-list-item clickable title="资料编辑" @click="open('userinfo')">
 				<template v-slot:footer>
 					<view class="iconfont icon-jinru"></view>
 				</template>
@@ -48,9 +48,12 @@
 				switch (type) {
 					case 'password':
 						url = "../userPassWord/userPassWord"
-
+						break;
+					case 'userinfo':
+						url = "../userinfo/userinfo"
+						break;
 				};
-
+				console.log(url)
 				uni.navigateTo({
 					url: url
 				})

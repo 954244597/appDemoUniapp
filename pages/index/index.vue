@@ -1,14 +1,15 @@
 <template>
 	<view>
 		<tabBar @clickTabBar="clickTabBar" :topBar="topBar" :activity="activity" :scorlInfo="scorlInfo"
-			style="height:100rpx;" />
+			style="height:100rpx;">
+		</tabBar>
 		<swiper disable-programmatic-animation :current="activity" @change="swipterOnchange"
 			:style="'height:'+listHeight+'px;'">
 			<swiper-item v-for="(item,index) in topBar" :key="index">
 				<scroll-view scroll-y="true" :style="'height:'+listHeight+'px;'" @scrolltolower="loadmor">
 					<divider></divider>
-					<block v-for="(item,index) in list" :key="index">
-						<commonList :item="item" :index="index" @follow="follow" @doSopport="doSopport" />
+					<block v-for="(item,indexs) in list" :key="indexs">
+						<commonList :item="item" :index="indexs" @follow="follow" @doSopport="doSopport" />
 						<divider></divider>
 					</block>
 					<view class="flex align-center justify-center py-3">
@@ -17,7 +18,6 @@
 				</scroll-view>
 			</swiper-item>
 		</swiper>
-
 	</view>
 </template>
 
